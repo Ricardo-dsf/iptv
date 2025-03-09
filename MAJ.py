@@ -1,4 +1,3 @@
-# filepath: /c:/Users/ricardo/OneDrive - ODISEE/Bureaublad/systeem netwerkbeheer/inf cloud/json/virtual router ABC/MAJ.py
 import re
 import requests
 
@@ -37,8 +36,16 @@ def update_links(content, replacements):
         content = re.sub(r'(.*' + re.escape(name) + r'.*http[^\s]+)', lambda match: match.group(1).replace(match.group(1).split()[-1], new_link), content)
     return content
 
+# Afficher le contenu M3U avant la mise à jour
+print("Contenu M3U avant mise à jour:")
+print(m3u_content)
+
 # Mettre à jour les liens dans le contenu M3U
 updated_m3u_content = update_links(m3u_content, link_replacements)
+
+# Afficher le contenu M3U après la mise à jour
+print("Contenu M3U après mise à jour:")
+print(updated_m3u_content)
 
 # Enregistrer le fichier M3U mis à jour
 with open('combined.m3u', 'w', encoding='utf-8') as file:
